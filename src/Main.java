@@ -3,6 +3,5 @@ public class Main {
         User user = new User();
         TaskManager taskManager = new TaskManager(user);
         taskManager.start();
-        System.out.println("test commit");
     }
 }
