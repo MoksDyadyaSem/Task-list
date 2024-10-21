@@ -13,37 +13,59 @@ public class TaskManager {
             listMenu();
             switch (sc.nextLine()) {
                 case "1" -> {
-                    System.out.println("Enter task:");
-                    this.addTask(new Task(sc.nextLine()));
-                    System.out.println("\ntask was successfully added\n");
+                    System.out.print("Enter name of the task: ");
+                    String name = sc.nextLine();
+                    System.out.print("Enter description of the task: ");
+                    String description = sc.nextLine();
+                    this.addTask(new Task(name, description));
+                    System.out.println("""
+                            -----------------------------
+                            | Task was successfully added |
+                            -----------------------------
+                            """);
                 }
                 case "2" -> {
-                    System.out.println("Enter task ID to remove:");
+                    System.out.print("Enter task ID to remove: ");
                     this.removeTask(sc.nextInt());
                     sc.nextLine(); // Чтобы "съесть" символ новой строки
-                    System.out.println("\ntask was successfully removed\n");
+                    System.out.println("""
+                            -------------------------------
+                            | Task was successfully removed |
+                            -------------------------------
+                            """);
                 }
                 case "3" -> {
-                    System.out.println("\nlist of your tasks");
+                    System.out.println("\nList of your tasks:");
                     this.printTaskList();
                 }
                 case "4" -> {
-                    System.out.println("\nend of work\n");
+                    System.out.println("""
+                            -------------------
+                            | End of the work |
+                            -------------------
+                            """);
                     return;
                 }
-                default -> System.out.println("\nче ты ввёл\n");
+                default -> System.out.println("""
+                        -------------
+                        | WRONG INPUT |
+                        -------------
+                        """);
             }
         }
     }
 
     public void listMenu() {
         System.out.print("""
-                enter 1 to add task
-                enter 2 to delete task
-                enter 3 to list your tasks
-                enter 4 to exit
-                enter your choice:
-                """);
+                -----------------------------
+                |       Menu Options        |
+                -----------------------------
+                | 1. Add Task               |
+                | 2. Delete Task            |
+                | 3. List Your Tasks        |
+                | 4. Exit                   |
+                -----------------------------
+                Enter your choice:\s""");
     }
 
     public void addTask(Task task) {
@@ -64,10 +86,7 @@ public class TaskManager {
             System.out.println("No tasks available.");
         } else {
             for (Task task : this.user.taskList) {
-                System.out.println("---------------------------------");
-                System.out.println("ID: " + task.getId());
-                System.out.println("Task: " + task);
-                System.out.println("---------------------------------");
+                System.out.println(task);
             }
         }
     }

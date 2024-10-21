@@ -6,4 +6,3 @@ public class User {
         this.taskList = new ArrayList<>();
     }
 }
-//get*set

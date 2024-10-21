@@ -1,10 +1,12 @@
 public class Task {
     protected static Integer count = 0;
     protected final Integer id;
+    protected final String name;
     protected final String task;
 
-    public Task(String task) {
+    public Task(String name,String task) {
         this.id = ++count;
+        this.name = name;
         this.task = task;
     }
 
@@ -14,6 +16,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return id + " - " + task;
+        return "Task [id = " + id + ", name= " + name + ", task = " + task + "]";
     }
 }
