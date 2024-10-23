@@ -20,6 +20,9 @@ public class InformationProcessing {
         int maxID = Integer.MIN_VALUE;
         try {
             Scanner scanner = new Scanner(new File(fileName));
+            if (new File(fileName).length() == 0 || new File(fileName).length() == 1) {
+                return new ArrayList<Task>();
+            }
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] taskInfo = line.split("\\?");
@@ -30,7 +33,10 @@ public class InformationProcessing {
 
                 if (id > maxID) {
                     maxID = id;
+                } else {
+                    maxID = 0;
                 }
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден " + e.getMessage());
