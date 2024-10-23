@@ -9,9 +9,13 @@ public class TaskManager {
     }
 
     public void start() throws IOException {
-        this.user.taskList = InformationProcessing.loadFile("task.txt");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please enter the name of the file: ");
+        String fileName = sc.nextLine();
+
+        this.user.taskList = InformationProcessing.loadFile(fileName);
+
         while (true) {
-            Scanner sc = new Scanner(System.in);
             listMenu();
             switch (sc.nextLine()) {
                 case "1" -> {
@@ -46,7 +50,7 @@ public class TaskManager {
                             | End of the work |
                             -------------------
                             """);
-                    InformationProcessing.saveFile(this.user.taskList, "task.txt");
+                    InformationProcessing.saveFile(this.user.taskList, fileName);
                     return;
                 }
                 default -> System.out.println("""
