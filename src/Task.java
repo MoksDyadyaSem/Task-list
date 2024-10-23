@@ -9,6 +9,11 @@ public class Task {
         this.name = name;
         this.task = task;
     }
+    public Task(int id,String name,String task) {
+        this.id = id;
+        this.name = name;
+        this.task = task;
+    }
 
     public Integer getId() {
         return id;
@@ -17,5 +22,12 @@ public class Task {
     @Override
     public String toString() {
         return "Task [id = " + id + ", name= " + name + ", task = " + task + "]";
+    }
+    public String saveFormat() {
+        return String.format("%d?%s?%s", id, name, task);
+    }
+
+    public static void setCount(Integer count) {
+        Task.count = count;
     }
 }

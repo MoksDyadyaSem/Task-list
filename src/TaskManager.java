@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TaskManager {
@@ -7,7 +8,8 @@ public class TaskManager {
         this.user = user;
     }
 
-    public void start() {
+    public void start() throws IOException {
+        this.user.taskList = InformationProcessing.loadFile("task.txt");
         while (true) {
             Scanner sc = new Scanner(System.in);
             listMenu();
@@ -44,6 +46,7 @@ public class TaskManager {
                             | End of the work |
                             -------------------
                             """);
+                    InformationProcessing.saveFile(this.user.taskList, "task.txt");
                     return;
                 }
                 default -> System.out.println("""
